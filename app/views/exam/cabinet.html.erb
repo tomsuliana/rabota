@@ -1,5 +1,11 @@
 <h1>Exam#cabinet</h1>
 <p>Find me in app/views/exam/cabinet.html.erb</p>
+<h1>Привет, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
+
+<%= form_with url: "/exam/exam_process", method: :get do |form| %>
+  <%= form.submit('Пройти экзамен', id: 'exam-btn') %>
+<% end %>
+
 <%= form_with url: "/session/logout", method: :get do |form| %>
   <%= form.submit('Выход', id: 'exit-btn') %>
 <% end %>

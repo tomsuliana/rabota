@@ -1,2 +1,15 @@
 <h1>Exam#exam_process</h1>
 <p>Find me in app/views/exam/exam_process.html.erb</p>
+<h1>Questions</h1>
+
+<div id="exam_questions">
+  <% @questions = Question.all %>
+  <% @questions.each do |question| %>
+    <%= render question %>
+    <% @variants = Variant.where(question_id: question.id)%>
+    <% @variants.each do |variant|%>
+      <%= variant.var_text %>
+      <br>
+      <%end%>
+  <% end %>
+</div>

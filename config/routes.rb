@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :variants
+  resources :questions
+  get 'admin/panel'
+  get 'admin/control_users'
+  get 'admin/control_questions'
   get 'exam/cabinet'
   get 'exam/exam_process'
   get 'exam/exam_result'

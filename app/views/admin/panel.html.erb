@@ -1,0 +1,8 @@
+<h1>Admin#panel</h1>
+<p>Find me in app/views/admin/panel.html.erb</p>
+<div class="mt-2 d-flex align-items-center">
+    <a href="<%= new_question_path %>" class="ms-1 link text-primary">Create New Question</a>
+</div>
+<%= form_with url: "/session/logout", method: :get do |form| %>
+  <%= form.submit('Выход', id: 'exit-btn') %>
+<% end %>
