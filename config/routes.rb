@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'session/authorize'
   get 'session/logout'
   resources :users
+  post 'exam/exam_update'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

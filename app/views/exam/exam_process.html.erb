@@ -4,12 +4,30 @@
 
 <div id="exam_questions">
   <% @questions = Question.all %>
-  <% @questions.each do |question| %>
-    <%= render question %>
-    <% @variants = Variant.where(question_id: question.id)%>
+  <% @questions_i = Question.all.ids %>
+  <% @questions_i.each do |li| %>
+  <%=form_with url: "/exam/exam_update", method: :post do |form| %> 
+    <%= @questions.find_by(id: li).quest_text %>
+      <br>
+  <% @variants = Variant.where(question_id: li)%>
+    
     <% @variants.each do |variant|%>
-      <%= variant.var_text %>
+      <%= form.radio_button :answer, variant.id %>
+      <%= form.label :var_text, variant.var_text %>
       <br>
       <%end%>
-  <% end %>
+  <%= form.submit id: 'ans_btn', value: "Ответить", onclick: "myFunction" %>
+ <%end%>
+<%end%>
+ 
+  
+
+  <%# @questions.each do |question| %>
+    <%#= render question %>
+    <%# @variants = Variant.where(question_id: question.id)%>
+    <%# @variants.each do |variant|%>
+      <%# <%= variant.var_text %> 
+      <br>
+      <%#end%>
+  <%# end %>
 </div>
