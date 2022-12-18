@@ -2,6 +2,17 @@
 <p>Find me in app/views/exam/cabinet.html.erb</p>
 <h1>Привет, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
 
+<% exams=Examine.where(user_id: session[:current_user_id]) %>
+<%if !exams.empty?%>
+<h2>Твоя статистика: </h2>
+<%s=0%>
+<% exams.each do |exam| %>
+<%s=s+exam.score%>
+<h3>Дата и время экзамена: <%=exam.created_at%> Баллы: <%=exam.score%></h3>
+<%end%>
+<h2>Средний балл: <%=s/exams.length.to_f%></h2>
+<%end%>
+
 <%= form_with url: "/exam/exam_process", method: :get do |form| %>
   <%= form.submit('Пройти экзамен', id: 'exam-btn') %>
 <% end %>

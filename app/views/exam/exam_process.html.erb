@@ -19,6 +19,10 @@
   <%= form.submit id: 'ans_btn', value: "Ответить", onclick: "myFunction" %>
  <%end%>
 <%end%>
+
+<%= form_with url: exam_exam_result_path, method: :get do |form| %>
+  <%= form.submit('Завершить экзамен', id: 'exam-exit-btn') %>
+<% end %>
  
   
 
