@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_132256) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_19_124106) do
+  create_table "answers", force: :cascade do |t|
+    t.integer "examine_id"
+    t.integer "quest_id"
+    t.integer "user_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "examines", force: :cascade do |t|
     t.integer "score"
     t.integer "user_id"
@@ -40,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_132256) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answers", "examines"
   add_foreign_key "examines", "users"
   add_foreign_key "variants", "questions"
 end

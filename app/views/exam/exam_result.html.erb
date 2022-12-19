@@ -1,7 +1,16 @@
-<h1>Exam#exam_result</h1>
-<p>Find me in app/views/exam/exam_result.html.erb</p>
+<h1>Results of exam</h1>
 <div id="exam-result">
 <h1>Ваши баллы: <%= Examine.last.score %></h1>
+<% protocols = Answer.where(examine_id: Examine.last.id) %>
+<% protocols.each do |protocol|%>
+  <%= Question.find_by(id: protocol.quest_id).quest_text %>
+  <br>
+  <h6 style="color:blue;">Ваш ответ: <%= Variant.find_by(id: protocol.user_answer).var_text %></h6>
+  <h6 style="color:green;">Правильный ответ: <%= Variant.find_by(question_id: protocol.quest_id, correct: true).var_text%> </h6>
+<%end%>
+
+
+
 <%= form_with url: exam_cabinet_path, method: :get do |form| %>
   <%= form.submit('Вернуться в личный кабинет', id: 'to-cabinet-btn') %>
 <% end %>

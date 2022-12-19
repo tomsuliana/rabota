@@ -1,22 +1,30 @@
-<h1>Exam#cabinet</h1>
-<p>Find me in app/views/exam/cabinet.html.erb</p>
+<div class="row">
+<div class="col-4">
+<h1>Личный кабинет</h1>
 <h1>Привет, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
-
+<%= form_with url: "/exam/exam_process", method: :get do |form| %>
+  <%= form.submit('Пройти экзамен', id: 'exam-btn', class: "btn btn-primary") %>
+<% end %>
+<br>
+<%= form_with url: "/session/logout", method: :get do |form| %>
+  <%= form.submit('Выход', id: 'exit-btn', class: "text-bg-dark p-3") %>
+<% end %>
+</div>
+<div class="col-4">
 <% exams=Examine.where(user_id: session[:current_user_id]) %>
 <%if !exams.empty?%>
 <h2>Твоя статистика: </h2>
 <%s=0%>
 <% exams.each do |exam| %>
 <%s=s+exam.score%>
-<h3>Дата и время экзамена: <%=exam.created_at%> Баллы: <%=exam.score%></h3>
+<h6>Дата и время экзамена: <%=exam.created_at%> Баллы: <%=exam.score%></h6>
 <%end%>
+<%end%>
+</div>
+<div class="col-4">
+<%if !exams.empty?%>
+<h2>Экзаменов пройдено: <%=exams.length%></h2>
 <h2>Средний балл: <%=s/exams.length.to_f%></h2>
 <%end%>
-
-<%= form_with url: "/exam/exam_process", method: :get do |form| %>
-  <%= form.submit('Пройти экзамен', id: 'exam-btn') %>
-<% end %>
-
-<%= form_with url: "/session/logout", method: :get do |form| %>
-  <%= form.submit('Выход', id: 'exit-btn') %>
-<% end %>
+</div>
+</div>

@@ -1,29 +1,29 @@
-<h1>Exam#exam_process</h1>
-<p>Find me in app/views/exam/exam_process.html.erb</p>
+<h1>Exam processing</h1>
 <h1>Questions</h1>
+
 
 <div id="exam_questions">
   <% @questions = Question.all %>
   <% @questions_i = Question.all.ids %>
-  <% @questions_i.each do |li| %>
-  <%=form_with url: "/exam/exam_update", method: :post do |form| %> 
+  <% @arr.each do |li| %>
+  <%=form_with url: "/exam/exam_update", id: "form_#{li}", class: "form-check", method: :post do |form| %> 
     <%= @questions.find_by(id: li).quest_text %>
       <br>
   <% @variants = Variant.where(question_id: li)%>
     
     <% @variants.each do |variant|%>
-      <%= form.radio_button :answer, variant.id %>
-      <%= form.label :var_text, variant.var_text %>
+      <%= form.radio_button :answer, variant.id, required: true, class: "form-check-input"%>
+      <%= form.label :var_text, variant.var_text, class: "form-check-label" %>
       <br>
       <%end%>
-  <%= form.submit id: 'ans_btn', value: "Ответить", onclick: "myFunction" %>
+  <%= form.submit class: "submit-btn", value: "Ответить" %>
+  <%# onclick: "disable_button(#{li})" %>
  <%end%>
 <%end%>
 
 <%= form_with url: exam_exam_result_path, method: :get do |form| %>
   <%= form.submit('Завершить экзамен', id: 'exam-exit-btn') %>
 <% end %>
- 
   
 
   <%# @questions.each do |question| %>
@@ -35,3 +35,27 @@
       <%#end%>
   <%# end %>
 </div>
+
+<script>
+  // function disable_button(button_id) {
+  //   let button = document.getElementById(`ans_btn_${button_id}`);
+  //   // button.disabled = true;
+  // }
+  // let question_forms = document.getElementsByTagName("form");
+  // for (let i = 0; i < question_forms.length - 1; i++) {
+  //   question_forms[i].addEventListener("submit", (event)=>{
+  //     let form = event.target;
+
+  //     console.log(form);
+
+  //     let button = form.getElementsByClassName("submit-btn")[0];
+  //     button.style.display = "none";
+
+  //     let dummy_btn = document.createElement("button");
+  //     dummy_btn.textContent = "Ответить";
+  //     dummy_btn.disabled = true;
+      
+  //     form.appendChild(dummy_btn);
+  //   })
+  // }
+</script>

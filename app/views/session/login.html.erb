@@ -1,12 +1,11 @@
-<h1>Session#login</h1>
-<p>Find me in app/views/session/login.html.erb</p>
+<h1>Registration</h1>
 <% flash.each do |type, msg| %>
   <% unless type == "notice" %>
     <p id = 'error' class="text-danger mt-2"><%= msg %></p>
   <% end %>
 <% end %>
 <%= form_with url: session_authorize_path, local: true  do |form| %>
-  <div>
+  <div >
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
