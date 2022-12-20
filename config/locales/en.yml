@@ -30,4 +30,22 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        name: "Your name"
+        password: "Your password"
+        password_confirmation: "Confirm password"
+  
+  regist: "Registration"
+  sign: "Sign up"
+  new_user: "New User"
+  cabinet: "Your cabinet"
+  hello: "Hello"
+  statistic: "Your statistics"
+  date_time: "Date and time"
+  num_ex: "Exams passed"
+  avg_score: "Average score"
+  score: "Score"

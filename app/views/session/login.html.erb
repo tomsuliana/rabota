@@ -1,4 +1,4 @@
-<h1>Registration</h1>
+<h1><%= t 'regist' %></h1>
 <% flash.each do |type, msg| %>
   <% unless type == "notice" %>
     <p id = 'error' class="text-danger mt-2"><%= msg %></p>
@@ -17,6 +17,6 @@
 
   <div class="mt-2 d-flex align-items-center">
     <%= form.submit class: "btn btn-primary", value: 'Login' %>
-    <a href="<%= new_user_path %>" class="ms-1 link text-primary">Sign Up</a>
+    <a href="<%= new_user_path %>" class="ms-1 link text-primary"><%= t 'sign' %></a>
   </div>
 <% end %>

@@ -1,8 +1,8 @@
 
 <div class="row">
 <div class="col-4">
-<h1>Личный кабинет</h1>
-<h1>Привет, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
+<h1><%= t 'cabinet' %></h1>
+<h1><%= t 'hello' %>, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
 <%= form_with url: "/exam/exam_process", method: :get do |form| %>
   <%= form.submit('Пройти экзамен', id: 'exam-btn', class: "btn btn-primary btn-lg") %>
 <% end %>
@@ -14,18 +14,18 @@
 <div class="col-4">
 <% exams=Examine.where(user_id: session[:current_user_id]) %>
 <%if !exams.empty?%>
-<h2>Твоя статистика: </h2>
+<h2><%= t 'statistic' %>: </h2>
 <%s=0%>
 <% exams.each do |exam| %>
 <%s=s+exam.score%>
-<h6>Дата и время экзамена: <%=exam.created_at%> Баллы: <%=exam.score%></h6>
+<h6><%= t 'date_time' %>: <%=exam.created_at%> <%= t 'score' %>: <%=exam.score%></h6>
 <%end%>
 <%end%>
 </div>
 <div class="col-4">
 <%if !exams.empty?%>
-<h2>Экзаменов пройдено: <%=exams.length%></h2>
-<h2>Средний балл: <%=s/exams.length.to_f%></h2>
+<h2><%= t 'num_ex' %>: <%=exams.length%></h2>
+<h2><%= t 'avg_score' %>: <%=s/exams.length.to_f%></h2>
 <%end%>
 </div>
 </div>

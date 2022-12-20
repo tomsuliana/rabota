@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models: 
+      user: "Пользователь"
+    attributes:
+      user:
+        name: "Ваше имя"
+        password: "Пароль"
+        password_confirmation: "Подтвердите пароль"
+  
+  regist: "Регистрация"
+  sign: "Создать аккаунт"
+  new_user: "Новый рользователь"
+  cabinet: "Личный кабинет"
+  hello: "Привет"
+  statistic: "Твоя статистика"
+  date_time: "Дата и время"
+  num_ex: "Экзаменов пройдено"
+  avg_score: "Средний балл"
+  score: "Баллы"
+
+  
