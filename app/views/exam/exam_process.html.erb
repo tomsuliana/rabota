@@ -1,12 +1,12 @@
 <h1>Exam processing</h1>
 <h1>Questions</h1>
 
-
+<div id="timer"></div>
 <div id="exam_questions">
   <% @questions = Question.all %>
   <% @questions_i = Question.all.ids %>
   <% @arr.each do |li| %>
-  <%=form_with url: "/exam/exam_update", id: "form_#{li}", class: "form-check", method: :post do |form| %> 
+  <%=form_with url: "/exam/exam_update", id: "form_#{li}", class: "form-check",  method: :post do |form| %> 
     <%= @questions.find_by(id: li).quest_text %>
       <br>
   <% @variants = Variant.where(question_id: li)%>
@@ -16,13 +16,13 @@
       <%= form.label :var_text, variant.var_text, class: "form-check-label" %>
       <br>
       <%end%>
-  <%= form.submit class: "submit-btn", value: "Ответить" %>
+  <%= form.submit class: "btn btn-info", value: "Ответить" %>
   <%# onclick: "disable_button(#{li})" %>
  <%end%>
 <%end%>
 
-<%= form_with url: exam_exam_result_path, method: :get do |form| %>
-  <%= form.submit('Завершить экзамен', id: 'exam-exit-btn') %>
+<%= form_with url: exam_exam_result_path, id: 'exam-exit-btn', method: :get do |form| %>
+  <%= form.submit('Завершить экзамен', class: "btn btn-danger btn-lg", onclick: "clearTimeout(timerId)") %>
 <% end %>
   
 
@@ -36,7 +36,7 @@
   <%# end %>
 </div>
 
-<script>
+<script >
   // function disable_button(button_id) {
   //   let button = document.getElementById(`ans_btn_${button_id}`);
   //   // button.disabled = true;
@@ -57,5 +57,37 @@
       
   //     form.appendChild(dummy_btn);
   //   })
+  // }
+  function disable_form(form_id){
+    var form = document.getElementById(`form_${form_id}`);
+    console.log(form);
+    var elements = form.elements;
+    for (var i = 0, len = elements.length; i < len; ++i) {
+      elements[i].readOnly = true;
+    }
+  }
+  // let timerShow = document.getElementById("timer");
+  let timerId = setTimeout(finishexam,20000);
+  function finishexam(){
+    alert("Ваше время вышло")
+    document.getElementById('exam-exit-btn').submit()
+  }
+  
+  // window.onload = function(){
+  //   timer = setInterval(function(){
+  //   timesecond = 20000;
+  //   seconds = timesecond;
+  //   minutes = timesecond%60;
+  //   hour = timesecond/60%60;
+  //   console.log(timesecond)
+  //   if (timesecond <= 0){
+  //     clearInterval(timer);
+  //     alert("jkhfrg");
+  //   }else{
+  //     let strTimer = `${Math.trunc(hour)}:${Math.trunc(minutes)}:${seconds}`;
+  //     timerShow.innerHTML = strTimer;
+  //   }
+  //   --timesecond;
+  // }, 1000);
   // }
 </script>

@@ -1,10 +1,12 @@
 <h1>Administration panel</h1>
 <div class="mt-2 d-flex align-items-center">
-    <a href="<%= new_question_path %>" class="ms-1 link text-primary">Create New Question</a>
+    <a href="<%= new_question_path %>" class="btn btn-primary btn-lg active">Create New Question</a>
 </div>
 <div class="mt-2 d-flex align-items-center">
-  <a href="<%= users_path %>" class="ms-1 link text-primary"> Show users </a>
+  <a href="<%= users_path %>" class="btn btn-primary btn-lg active"> Show users </a>
 </div>
+<div class="mt-2 d-flex align-items-center">
 <%= form_with url: "/session/logout", method: :get do |form| %>
-  <%= form.submit('Выход', id: 'exit-btn') %>
+  <%= form.submit('Выход', id: 'exit-btn', class: "btn btn-secondary btn-lg") %>
 <% end %>
+</div>

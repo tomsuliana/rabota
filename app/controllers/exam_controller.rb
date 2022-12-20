@@ -1,4 +1,5 @@
 class ExamController < ApplicationController
+  before_action :require_login
   def cabinet
   end
 
@@ -22,10 +23,16 @@ class ExamController < ApplicationController
     ex = Examine.last
     lastscore = ex.score
     var = Variant.find_by(id: params[:answer])
-    ans = Answer.new(examine_id: ex.id, quest_id: var.question_id, user_answer: var.id)
-    ans.save
-    if var.correct == true 
-      ex.update(score: lastscore+1)
+    if !Answer.find_by(examine_id: Examine.last, quest_id: var.question_id)
+      ans = Answer.new(examine_id: ex.id, quest_id: var.question_id, user_answer: var.id)
+      ans.save
+      if var.correct == true 
+        ex.update(score: lastscore+1)
+      end
     end
+  end
+
+  def require_login
+    redirect_to root_path if session[:current_user_id].nil?
   end
 end

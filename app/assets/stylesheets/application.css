@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ /* footer {
+    height: 40px;
+    position: static;
+    bottom: 0;
+    width: 100%;
+    background-color: aqua;
+} */
+ /* header {
+    height: 40px;
+    position: absolute;
+    width: 100%;
+    background-color: aqua;
+ } */
+ main {
+    margin-top: 15px;
+}

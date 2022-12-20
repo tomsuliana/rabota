@@ -1,13 +1,14 @@
+
 <div class="row">
 <div class="col-4">
 <h1>Личный кабинет</h1>
 <h1>Привет, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
 <%= form_with url: "/exam/exam_process", method: :get do |form| %>
-  <%= form.submit('Пройти экзамен', id: 'exam-btn', class: "btn btn-primary") %>
+  <%= form.submit('Пройти экзамен', id: 'exam-btn', class: "btn btn-primary btn-lg") %>
 <% end %>
 <br>
 <%= form_with url: "/session/logout", method: :get do |form| %>
-  <%= form.submit('Выход', id: 'exit-btn', class: "text-bg-dark p-3") %>
+  <%= form.submit('Выход', id: 'exit-btn', class: "btn btn-secondary btn-lg") %>
 <% end %>
 </div>
 <div class="col-4">
@@ -28,3 +29,4 @@
 <%end%>
 </div>
 </div>
+
