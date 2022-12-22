@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :require_admin, only: [:panel]
+  before_action :require_admin
   def panel
   end
 

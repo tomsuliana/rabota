@@ -8,11 +8,11 @@ class ExamController < ApplicationController
     ex.save
     @arr = []
     loop do
-      rand_number = rand(1..10)
+      rand_number = rand(1..12)
       if !@arr.include? rand_number
         @arr.push(rand_number)
       end
-      break if @arr.length==8
+      break if @arr.length==10
     end
   end
 
