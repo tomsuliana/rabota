@@ -6,17 +6,17 @@
 <% end %>
 <%= form_with url: session_authorize_path, local: true  do |form| %>
   <div >
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label value = "#{ t 'reg_name' }", style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :password, style: "display: block" %>
+    <%= form.label value = "#{ t 'reg_password' }", style: "display: block" %>
     <%= form.password_field :password %>
   </div>
 
   <div class="mt-2 d-flex align-items-center">
-    <%= form.submit class: "btn btn-primary", value: 'Login' %>
+    <%= form.submit class: "btn btn-primary", value: "#{ t 'login' }" %>
     <a href="<%= new_user_path %>" class="ms-1 link text-primary"><%= t 'sign' %></a>
   </div>
 <% end %>

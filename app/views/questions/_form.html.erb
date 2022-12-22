@@ -12,11 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :question_text, style: "display: block" %>
+    <%= form.label value = "#{ t 'quest_text' }", style: "display: block" %>
     <%= form.text_field :quest_text %>
   </div>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit(class: "btn btn-primary btn-lg")%>
   </div>
 <% end %>

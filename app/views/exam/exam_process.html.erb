@@ -1,4 +1,4 @@
-<h1>Exam processing</h1>
+<h1><%= t 'ex_proc' %></h1>
 <h1>Questions</h1>
 
 <div id="timer"></div>
@@ -16,7 +16,9 @@
       <%= form.label :var_text, variant.var_text, class: "form-check-label" %>
       <br>
       <%end%>
-  <%= form.submit class: "btn btn-info", value: "Ответить" %>
+      <br>
+  <%= form.submit class: "btn btn-info", value: "Ответить", onclick: "disable_form(#{li});" %>
+  <br>
   <%# onclick: "disable_button(#{li})" %>
  <%end%>
 <%end%>
@@ -63,11 +65,11 @@
     console.log(form);
     var elements = form.elements;
     for (var i = 0, len = elements.length; i < len; ++i) {
-      elements[i].readOnly = true;
+      elements[i].style.display = "none";
     }
   }
   // let timerShow = document.getElementById("timer");
-  let timerId = setTimeout(finishexam,200000);
+  let timerId = setTimeout(finishexam,20000);
   function finishexam(){
     alert("Ваше время вышло")
     document.getElementById('exam-exit-btn').submit()

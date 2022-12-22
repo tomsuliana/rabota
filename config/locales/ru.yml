@@ -2,11 +2,17 @@ ru:
   activerecord:
     models: 
       user: "Пользователь"
+      question: "Вопрос"
+      variant: "Вариант"
     attributes:
       user:
         name: "Ваше имя"
         password: "Пароль"
         password_confirmation: "Подтвердите пароль"
+      variant:
+        variant_text: "Текст варианта"
+        correct: "Правильность"
+        question_id: "Вопрос"
   
   regist: "Регистрация"
   sign: "Создать аккаунт"
@@ -18,5 +24,34 @@ ru:
   num_ex: "Экзаменов пройдено"
   avg_score: "Средний балл"
   score: "Баллы"
+  reg_name: "Имя"
+  reg_password: "Пароль"
+  login: "Войти"
+  ex_proc: "Экзамен"
+  pass: "Пройти экзамен"
+  exit: "Выйти"
+  result: "Результаты экзамена"
+  back_cab: "Вернуться в личный кабинет"
+  your_ans: "Ваш ответ"
+  cor_ans: "Правильный ответ"
+  adm_panel: "Панель администратора"
+  create_quest: "Создать новый вопрос"
+  show_users: "Показать пользователей"
+  new_quest: "Новый вопрос"
+  to_quest: "К вопросам"
+  quest_text: "Текст вопроса"
+  quest: "Вопросы"
+  show_quest: "Показать этот вопрос"
+  new_quest: "Новый вопрос"
+  to_panel: "На панель"
+  new_var: "Новый вариант"
+  to_var: "К вариантам"
+  show_var: "Показать этот вариант"
+  var_text: "Текст варианта"
+  cor: "Правильность"
+  quest_id: "Вопрос"
+  
+
+
 
   

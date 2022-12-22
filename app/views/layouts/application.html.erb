@@ -16,15 +16,15 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li><%=link_to 'English', root_path(locale: :en)%></li>
-        <li><%=link_to 'Русский', root_path(locale: :ru)%></li>
+    <nav class="navbar navbar-expand-lg navbar-dark my-primary">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><%=link_to 'English', root_path(locale: :en), class: "nav-link" %></li>
+        <li class="nav-item"><%=link_to 'Русский', root_path(locale: :ru),  class: "nav-link" %></li>
       </ul>
     </nav>
   
-    
+    <div class="container">
     <%= yield %>
-   
+    </div>
   </body>
 </html>

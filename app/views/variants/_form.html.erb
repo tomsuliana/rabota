@@ -25,8 +25,8 @@
     <%= form.label :question_id, style: "display: block" %>
     <%= form.number_field :question_id , value: params[:id]%>
   </div>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit(class: "btn btn-primary btn-lg") %>
   </div>
 <% end %>

@@ -4,11 +4,11 @@
 <h1><%= t 'cabinet' %></h1>
 <h1><%= t 'hello' %>, <%= User.find_by(id: session[:current_user_id]).name %>!<h1>
 <%= form_with url: "/exam/exam_process", method: :get do |form| %>
-  <%= form.submit('Пройти экзамен', id: 'exam-btn', class: "btn btn-primary btn-lg") %>
+  <%= form.submit(value: "#{ t 'pass'}", id: 'exam-btn', class: "btn btn-primary btn-lg") %>
 <% end %>
 <br>
 <%= form_with url: "/session/logout", method: :get do |form| %>
-  <%= form.submit('Выход', id: 'exit-btn', class: "btn btn-secondary btn-lg") %>
+  <%= form.submit(value: "#{ t 'exit'}", id: 'exit-btn', class: "btn btn-secondary btn-lg") %>
 <% end %>
 </div>
 <div class="col-4">

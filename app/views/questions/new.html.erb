@@ -1,9 +1,9 @@
-<h1>New question</h1>
+<h1><%= t 'new_quest' %></h1>
 
 <%= render "form", question: @question %>
 
 <br>
 
 <div>
-  <%= link_to "Back to questions", questions_path %>
+  <%= link_to "#{ t 'to_quest'}", questions_path %>
 </div>
