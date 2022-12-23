@@ -6,5 +6,5 @@
   <%= link_to "Edit this question", edit_question_path(@question) %> |
   <%= link_to "Back to questions", questions_path %> |
   <%= link_to "Create variant to this question", new_variant_path(id: params[:id]) %>
-  <%= button_to "Destroy this question", @question, method: :delete %>
+  <%= button_to "Destroy this question", @question, method: :delete, class: "btn btn-primary btn-lg" %>
 </div>

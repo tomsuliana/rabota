@@ -13,12 +13,12 @@
   <% @variants = Variant.where(question_id: li)%>
     
     <% @variants.each do |variant|%>
-      <%= form.radio_button :answer, variant.id, required: true, class: "form-check-input"%>
+      <%= form.radio_button :answer, variant.id, required: true, class: "form-check-input", id: "id#{variant.id}"%>
       <%= form.label :var_text, variant.var_text, class: "form-check-label" %>
       <br>
       <%end%>
       <br>
-  <%= form.submit class: "btn btn-info", value: "Ответить", onclick: "disable_form(#{li});" %>
+  <%= form.submit class: "btn btn-info", value: "Ответить", onclick: "disable_form(#{li});", id: "ans#{li}"%>
   <br>
   <%# onclick: "disable_button(#{li})" %>
  <%end%>
@@ -71,11 +71,17 @@
     }
   }
   // let timerShow = document.getElementById("timer");
-  let timerId = setTimeout(finishexam,20000);
+  setTimeout(finishexam,2000);
   function finishexam(){
     alert("Ваше время вышло")
-    document.getElementById('exam-exit-btn').submit()
+    document.getElementsByClassName('btn btn-info').disabled = true;
+    //document.getElementById('exam-exit-btn').submit()
   }
+
+  // function submitPoll(id){
+  //     document.getElementById("votebutton").disabled = true;
+  //     setTimeout(function(){document.getElementById("votebutton").disabled = false;},5000);
+  // }
   
   // window.onload = function(){
   //   timer = setInterval(function(){
