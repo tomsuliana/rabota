@@ -7,7 +7,8 @@
   <% @questions_i = Question.all.ids %>
   <% @arr.each do |li| %>
   <%=form_with url: "/exam/exam_update", id: "form_#{li}", class: "form-check",  method: :post do |form| %> 
-    <%= @questions.find_by(id: li).quest_text %>
+    <% unless @questions.find_by(id: li).nil? %>
+      <%= @questions.find_by(id: li).quest_text %>
       <br>
   <% @variants = Variant.where(question_id: li)%>
     
@@ -21,6 +22,7 @@
   <br>
   <%# onclick: "disable_button(#{li})" %>
  <%end%>
+<%end%>
 <%end%>
 
 <%= form_with url: exam_exam_result_path, id: 'exam-exit-btn', method: :get do |form| %>

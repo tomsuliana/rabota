@@ -3,7 +3,6 @@ require 'spec_helper'
 
 RSpec.describe 'Static content', type: :system do
   before :each do
-    User.create(name: 'testuser', password: '1234')
     User.create(name: 'testadmin', password: '1234')
     User.last.admin!
   end
@@ -31,10 +30,23 @@ RSpec.describe 'Static content', type: :system do
     end
   end
   scenario 'Create question not admin' do
+    User.create(name: 'testuser', password: '1234')
     visit root_path
     fill_in :name, with: 'testuser'
     fill_in :password, with: '1234'
     click_button 'Login'
     expect(current_path).to eq root_path
+  end
+  scenario 'Register, login, calculate' do
+    visit new_user_path
+    fill_in :user_name, with: 'Alina'
+    fill_in :user_password, with: 'alina'
+    fill_in :user_password_confirmation, with: 'alina'
+    click_button 'Create User'
+    visit root_path
+    fill_in :name, with: 'Alina'
+    fill_in :password, with: 'alina'
+    click_button 'Login'
+    expect(page).to have_current_path "/en/exam/cabinet"
   end
 end

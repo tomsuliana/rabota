@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :variant_text, style: "display: block" %>
-    <%= form.text_field :var_text %>
+    <%= form.text_field :var_text, id: 'vartext' %>
   </div>
 
   <div>
@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :question_id, style: "display: block" %>
-    <%= form.number_field :question_id , value: params[:id]%>
+    <%= form.number_field :question_id, id: 'questid' , value: params[:id]%>
   </div>
   <br>
   <div>
