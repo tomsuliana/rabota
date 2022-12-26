@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'Add and search db(check adding to db)' do
     subject {
-      User.new(name: 'testuser', password: '1234')
+      User.new(name: 'testuser', password: 'testuser1234')
     }
     it "is valid with valid attributes" do
         expect(subject).to be_valid
@@ -29,8 +29,8 @@ RSpec.describe User, type: :model do
   end
   describe 'uniq field' do
     it 'another checks uniqueness_of field' do
-      User.create!(name: 'testuser', password: '1234')
-      expect { User.create!(name: 'testuser', password: '1234') }.to raise_error ActiveRecord::RecordInvalid
+      User.create!(name: 'testuser', password: 'testuser1234')
+      expect { User.create!(name: 'testuser', password: 'testuser1234') }.to raise_error ActiveRecord::RecordInvalid
     end
   end
 end

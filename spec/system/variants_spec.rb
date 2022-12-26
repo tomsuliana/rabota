@@ -4,8 +4,7 @@ require 'spec_helper'
 RSpec.describe 'Static content', type: :system do
   before :each do
     User.create(name: 'testadmin', password: '1234')
-    Question.create(quest_text: 'testquestion')
-    User.last.admin!
+    Question.create(quest_text: 'Тестовый вопрос')
   end
   context 'Question admin' do
     before do
@@ -30,13 +29,13 @@ RSpec.describe 'Static content', type: :system do
       expect(page).to have_current_path new_variant_path
     end
     scenario 'Create variant admin' do
-      fill_in :vartext, with: 'test variant'
+      fill_in :vartext, with: 'Тестовый вариант'
       fill_in :questid, with: Question.last.id
       click_button 'Create Variant'
       expect(page).to have_content('Variant was successfully created')
     end
     scenario 'Delete variant admin' do
-      fill_in :vartext, with: 'test variant'
+      fill_in :vartext, with: 'Тестовый вариант'
       fill_in :questid, with: Question.last.id
       click_button 'Create Variant'
       click_button 'Destroy this variant'

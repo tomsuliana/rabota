@@ -2,6 +2,9 @@
 <h1>Questions</h1>
 
 <div id="timer"></div>
+<br>
+<div id="timer1" style="color:red;"></div>
+<br>
 <div id="exam_questions">
   <% @questions = Question.all %>
   <% @questions_i = Question.all.ids %>
@@ -64,19 +67,35 @@
   // }
   function disable_form(form_id){
     var form = document.getElementById(`form_${form_id}`);
-    console.log(form);
+    //console.log(form);
     var elements = form.elements;
     for (var i = 0, len = elements.length; i < len; ++i) {
       elements[i].style.display = "none";
     }
   }
-  // let timerShow = document.getElementById("timer");
-  setTimeout(finishexam,2000);
+  let timerShow = document.getElementById("timer1");
+  let timerId = setTimeout(finishexam,5000);
   function finishexam(){
-    alert("Ваше время вышло")
-    document.getElementsByClassName('btn btn-info').disabled = true;
+    //alert("Ваше время вышло")
+    timerShow.innerHTML = "Ваше время вышло"
+    let question_forms = document.getElementsByTagName("form");
+    for (let i = 0; i < question_forms.length - 1; i++) {
+      console.log(question_forms[i]);
+      elementsq = question_forms[i].elements;
+      for (var j = 0, len = elementsq.length; j < len; ++j) {
+        elementsq[j].style.display = "none";
+      }
+    }
+
     //document.getElementById('exam-exit-btn').submit()
   }
+
+  // setInterval(myTimer, 1000);
+
+  // function myTimer() {
+  //   const d = new Date();
+  //   document.getElementById("timer").innerHTML = d.toLocaleTimeString();
+  // }
 
   // function submitPoll(id){
   //     document.getElementById("votebutton").disabled = true;

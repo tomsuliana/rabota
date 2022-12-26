@@ -3,18 +3,14 @@ require 'spec_helper'
 
 RSpec.describe 'Static content', type: :system do
   before :each do
-    User.create(name: 'testadmin', password: '1234')
-    User.last.admin!
+    User.create(name: 'testadmin', password: '1234', role: 'admin')
   end
   context 'Question admin' do
     before do
       visit root_path
       fill_in :name, with: 'testadmin'
-      fill_in :password, with: '1234'
+      fill_in :password, with: 'admin1234'
       click_button 'Login'
-    end
-    scenario 'Go to admin' do
-      expect(page).to have_current_path "/en/admin/panel"
     end
     scenario 'Go to question admin' do
       visit new_question_path

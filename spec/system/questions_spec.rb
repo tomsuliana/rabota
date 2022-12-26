@@ -3,8 +3,7 @@ require 'spec_helper'
 
 RSpec.describe 'Static content', type: :system do
   before :each do
-    User.create(name: 'testadmin', password: '1234')
-    User.last.admin!
+    User.create(name: 'testadmin', password: '1234', role: 'admin')
   end
   context 'Question admin' do
     before do
@@ -18,12 +17,12 @@ RSpec.describe 'Static content', type: :system do
       expect(page).to have_current_path new_question_path
     end
     scenario 'Create question admin' do
-      fill_in :quest, with: 'test question'
+      fill_in :quest, with: 'Тестовый вопрос'
       click_button 'Create Question'
       expect(page).to have_content('Question was successfully created')
     end
     scenario 'Delete question admin' do
-      fill_in :quest, with: 'test question'
+      fill_in :quest, with: 'Тестовый вопрос'
       click_button 'Create Question'
       click_button 'Destroy this question'
       expect(page).to have_content('Question was successfully destroyed.')
